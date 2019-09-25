@@ -22,8 +22,18 @@ end
 describe "#print" do
   it "prints the correct output" do
 
-    expect(subject.print).to eq "#{subject.get_time} | You said: '#{subject.get_input}'!"
+    expect(subject.print).to eq "#{subject.get_time} | You said: '#{@input}'!"
   end
+end
+
+describe '#game' do
+  it { is_expected.to respond_to :game }
+
+  it 'breaks the loop' do
+    allow(subject).to receive(:get_input) { "exit" }
+    expect { subject.game }.to raise_error("Goodbye!")
+  end
+
 end
 
 

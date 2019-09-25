@@ -2,12 +2,11 @@ require "time"
 class Echo
 
   def prompt
-    "Say something:"
+    puts "Say something:"
   end
 
   def get_input
-    input = gets.chomp
-    # puts "You said: #{input}"
+    @input = gets.chomp
   end
 
   def get_time
@@ -15,6 +14,19 @@ class Echo
   end
 
   def print
-    "#{get_time} | You said: '#{get_input}'!"
+    puts "#{get_time} | You said: '#{@input}'!"
+  end
+
+  def game
+    while true do
+      prompt
+      if get_input == "exit"
+        puts "Goodbye!"
+        break
+      end 
+      print
+    end
   end
 end
+
+Echo.new.game
